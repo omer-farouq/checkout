@@ -44,11 +44,11 @@
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
                            <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <input id="secondProductCurrentValue" type="text" class="form-control text-center" value="1">
+                           <button id="secondProductPlus"class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$<span id="secondProductPrice">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -64,7 +64,7 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
+                        <h5>$<span id="subTotal">1,278</span></h5>
                         <h5>$0</h5>
                         <h5>$1,278</h5>
                      </div>
@@ -79,19 +79,43 @@
    </section>
 
    <script>
-     const productPlus = document.getElementById('plusFirstProduct');
-     productPlus.addEventListener('click', function(){
+      // for first iPhone 11 128GB Black
+     const firstProductPlus = document.getElementById('plusFirstProduct');
+     firstProductPlus.addEventListener('click', function(){
         const presentValue = document.getElementById('currentValue').value;
         const current = parseFloat(presentValue);
         const addValue = current + 1;
         document.getElementById("currentValue").value = addValue;
 
         const firstProductPrice = document.getElementById('firstProductPrice').innerText;
-        console.log(firstProductPrice);
         const firstProdcutAmount = parseFloat(firstProductPrice)
         const firstProductTotalPrice = firstProdcutAmount * addValue;
         document.getElementById('firstProductPrice').innerText = firstProductTotalPrice;
+
+        //subtotal incrase
+        const firstSubTotal = document.getElementById('subTotal').innerText;
+        const subTotalAmount = parseFloat(firstSubTotal);
+        const firstSubPrice = subTotalAmount + firstProductTotalPrice;
+        document.getElementById('subTotal').innerText = firstSubPrice;
+      //   console.log(subTotal);
      })
+     
+     const secondProductPlus = document.getElementById('secondProductPlus');
+     secondProductPlus.addEventListener('click', function(){
+      const secondProductCurrentValue = document.getElementById('secondProductCurrentValue').value;
+      const value = parseFloat(secondProductCurrentValue);
+      const addValueSecond = value + 1;
+      document.getElementById('secondProductCurrentValue').value = addValueSecond;
+
+      const secondProductPrice = document.getElementById('secondProductPrice').innerText;
+      const secondProductAmount = parseFloat(secondProductPrice);
+      const secondProductTotalPrice = secondProductAmount * addValueSecond;
+      document.getElementById('secondProductPrice').innerText = secondProductTotalPrice;
+
+      // console.log(addValueSecond);
+     })
+     
+
    </script>
 </body>
 
